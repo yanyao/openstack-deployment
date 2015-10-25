@@ -1,0 +1,3 @@
+from keystoneclient.v2_0 import client
+keystone = client.Client("http://172.29.236.100:35357/v2.0", "2f7074cbc241268660876c8268f73db688b801b8b2f3050f2640f395d029dacb865")
+keystone.tenants.list()
