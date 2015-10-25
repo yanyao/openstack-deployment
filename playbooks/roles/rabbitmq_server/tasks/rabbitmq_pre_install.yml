@@ -27,7 +27,7 @@
     url: "{{ rabbitmq_package_url }}"
     dest: "{{ rabbitmq_package_path }}"
     mode: "0644"
-    #sha256sum: "{{ rabbitmq_package_sha256 }}"
+    sha256sum: "{{ rabbitmq_package_sha256 }}"
   register: package_download
   retries: 3
   delay: 10

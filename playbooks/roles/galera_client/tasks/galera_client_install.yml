@@ -17,7 +17,6 @@
   apt:
     update_cache: yes
     cache_valid_time: 600
-    force: yes
   register: apt_update
   until: apt_update|success
   retries: 5
