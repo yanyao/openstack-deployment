@@ -55,10 +55,7 @@
   apt:
     pkg: "{{ item }}"
     state: latest
-<<<<<<< HEAD
     force: yes
-=======
->>>>>>> 30798eda152c8dca858333fbd4b9c37c5b7873a6
   register: install_packages
   until: install_packages|success
   retries: 5
