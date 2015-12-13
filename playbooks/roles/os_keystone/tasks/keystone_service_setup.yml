@@ -89,6 +89,7 @@
     password: "{{ keystone_auth_admin_password }}"
     insecure: "{{ keystone_service_adminuri_insecure }}"
   register: add_service
+  when: not keystone_service_in_ldap | bool
   until: add_service|success
   retries: 5
   delay: 10
@@ -123,6 +124,7 @@
     role_name: "{{ keystone_role_name }}"
     insecure: "{{ keystone_service_adminuri_insecure }}"
   register: add_service
+  when: not keystone_service_in_ldap | bool
   until: add_service|success
   retries: 5
   delay: 10
@@ -139,6 +141,7 @@
     role_name: "{{ keystone_default_role_name }}"
     insecure: "{{ keystone_service_adminuri_insecure }}"
   register: add_member_role
+  when: not keystone_service_in_ldap | bool
   until: add_member_role|success
   retries: 5
   delay: 10
