@@ -12,7 +12,7 @@ used_ips:
 
 global_overrides:
   internal_lb_vip_address: 172.29.236.100
-  external_lb_vip_address: 192.168.104.52
+  external_lb_vip_address: 172.29.236.100
   tunnel_bridge: "br-vxlan"
   management_bridge: "br-mgmt"
   provider_networks:
@@ -35,16 +35,6 @@ global_overrides:
         type: "vxlan"
         range: "1:1000"
         net_name: "vxlan"
-        group_binds:
-          - neutron_linuxbridge_agent
-    - network:
-        container_bridge: "br-vlan"
-        container_type: "veth"
-        container_interface: "eth12"
-        host_bind_override: "eth12"
-        type: "vlan"
-        range: "1:1000"
-        net_name: "vlan-ext"
         group_binds:
           - neutron_linuxbridge_agent
     - network:
@@ -105,12 +95,6 @@ identity_hosts:
 compute_hosts:
   startcloud:
     ip: 172.29.236.100
-  compute-vmware:
-    ip: 172.29.236.101
-  compute03:
-    ip: 172.29.236.111
-  compute04:
-    ip: 172.29.236.99
 
 storage_hosts:
   startcloud:
@@ -122,15 +106,6 @@ storage_hosts:
           volume_group: cinder-volumes
           volume_driver: cinder.volume.drivers.lvm.LVMVolumeDriver
           volume_backend_name: LVM_iSCSI
-  compute04:
-    ip: 172.29.236.99
-    container_vars:
-      cinder_backends:
-        limit_container_types: cinder_volume
-        v7k_fc:
-          volume_group: cinder-volumes
-          volume_driver: cinder.volume.drivers.lvm.LVMVolumeDriver
-          volume_backend_name: v7k_fc
 
 log_hosts:
   startcloud:
