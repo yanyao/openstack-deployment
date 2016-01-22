@@ -1,18 +1,24 @@
+---
 ceilometer_db_type: mongodb
-ceilometer_db_ip: 172.29.236.100
+ceilometer_db_ip: localhost
 ceilometer_db_port: 27017
 swift_ceilometer_enabled: False
-heat_ceilometer_enabled: True
-cinder_ceilometer_enabled: True
-glance_ceilometer_enabled: True
-nova_ceilometer_enabled: True
-neutron_ceilometer_enabled: True
+heat_ceilometer_enabled: False
+cinder_ceilometer_enabled: False
+glance_ceilometer_enabled: False
+nova_ceilometer_enabled: False
 glance_default_store: file
 glance_notification_driver: noop
 glance_swift_store_endpoint_type: internalURL
 ssl_protocol: "ALL -SSLv2 -SSLv3"
 ssl_cipher_suite: "ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS"
 ssh_delay: 5
+
+#cloud_repo: http://mirror.rackspace.com/rackspaceprivatecloud/
+cloud_repo: repo
+cloud_repo_port: 8181
+#openstack_repo_url: "http://{{ cloud_repo }}:{{ cloud_repo_port }}"
+#openstack_repo_url: "http://mirror.rackspace.com/rackspaceprivatecloud/"
 cloud_repo: repo
 cloud_repo_port: 8181
 openstack_repo_url: "http://{{ cloud_repo }}:{{ cloud_repo_port }}"
@@ -20,7 +26,8 @@ openstack_upstream_domain: "{{ cloud_repo }}"
 openstack_upstream_url: "http://{{ openstack_upstream_domain }}:{{ cloud_repo_port }}"
 openstack_repo_git_url: "http://{{ openstack_upstream_domain}}:{{ cloud_repo_port }}/openstackgit"
 pip_upstream_repo_url: "{{ openstack_repo_url }}/downloads"
-rabbitmq_package_url: "{{ openstack_repo_url }}/downloads/rabbitmq-server_3.5.6-1_all.deb"
+
+rabbitmq_package_url: "http://repo:8181/downloads/rabbitmq-server_3.5.6-1_all.deb"
 rabbitmq_package_sha256: "e3c377e585c123e06c88422248915f32216641d6f7dfab50d124535c8e93010d"
 openstack_host_apt_packages:
   - apparmor-utils
@@ -47,7 +54,13 @@ openstack_host_apt_packages:
   - vlan
   - wget
   - unzip
-
 keystone_token_provider: keystone.token.providers.uuid.Provider
-
 nova_console_type: novnc
+nova_novncproxy_git_repo: "{{ openstack_repo_git_url }}/novnc"
+lxc_container_caches:
+  - url: "{{ openstack_repo_url }}/downloads/trusty-container-ppc64.tgz"
+    name: "trusty.tgz"
+    sha256sum: "1d5c284f530cc93635af83b224aae5e81d5c51dd48c1677b7071608b16a57d46"
+    chroot_path: trusty/rootfs-ppc64el
+keystone_wsgi_processes: 4
+ansible_processor_vcpus: 2

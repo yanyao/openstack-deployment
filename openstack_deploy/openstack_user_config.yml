@@ -12,7 +12,7 @@ used_ips:
 
 global_overrides:
   internal_lb_vip_address: 172.29.236.100
-  external_lb_vip_address: 172.29.236.100
+  external_lb_vip_address: 9.114.104.243
   tunnel_bridge: "br-vxlan"
   management_bridge: "br-mgmt"
   provider_networks:
@@ -37,6 +37,15 @@ global_overrides:
         net_name: "vxlan"
         group_binds:
           - neutron_linuxbridge_agent
+#    - network:
+#        container_bridge: "br-vlan"
+#        container_type: "veth"
+#        container_interface: "eth12"
+#        host_bind_override: "eth12"
+#        type: "flat"
+#        net_name: "flat"
+#        group_binds:
+#          - neutron_linuxbridge_agent
     - network:
         container_bridge: "br-vlan"
         container_type: "veth"
@@ -60,61 +69,52 @@ global_overrides:
           - swift_proxy
 
 shared-infra_hosts:
-  startcloud:
+  aio1:
     # Rabbitmq, and galera are set to multiples to test clustering.
-    #affinity:
-    #  galera_container: 3
-    #  rabbit_mq_container: 3
     ip: 172.29.236.100
 
 os-infra_hosts:
-  startcloud:
+  aio1:
     # Horizon is set to multiple to test clustering. This test only requires x2.
-    #affinity:
-    #  horizon_container: 2
     ip: 172.29.236.100
 
 storage-infra_hosts:
-  startcloud:
+  aio1:
     ip: 172.29.236.100
 
-#repo-infra_hosts:
-#  startcloud:
-#    # Repo is set to multiple to test clustering. This test only requires x2.
-#    affinity:
-#      repo_container: 2
-#    ip: 172.29.236.100
+repo-infra_hosts:
+  aio1:
+    # Repo is set to multiple to test clustering. This test only requires x2.
+    ip: 172.29.236.100
 
 identity_hosts:
-  startcloud:
+  aio1:
     # Keystone is set to multiple to test clustering. This test only requires x2.
-    #affinity:
-    #  keystone_container: 2
     ip: 172.29.236.100
 
 compute_hosts:
-  startcloud:
+  aio1:
     ip: 172.29.236.100
 
 storage_hosts:
-  startcloud:
+  aio1:
     ip: 172.29.236.100
     container_vars:
       cinder_backends:
         limit_container_types: cinder_volume
-        v7k:
+        lvm:
           volume_group: cinder-volumes
           volume_driver: cinder.volume.drivers.lvm.LVMVolumeDriver
           volume_backend_name: LVM_iSCSI
 
 log_hosts:
-  startcloud:
+  aio1:
     ip: 172.29.236.100
 
 network_hosts:
-  startcloud:
+  aio1:
     ip: 172.29.236.100
 
 haproxy_hosts:
-  startcloud:
+  aio1:
     ip: 172.29.236.100

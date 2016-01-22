@@ -321,6 +321,8 @@ nova_apt_packages:
   - genisoimage
   - git
   - libpq-dev
+  - libxslt1-dev
+  - numactl
 
 # Spice console apt packages
 nova_spice_apt_packages:
