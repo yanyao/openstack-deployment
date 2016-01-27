@@ -322,7 +322,6 @@ nova_apt_packages:
   - git
   - libpq-dev
   - libxslt1-dev
-  - numactl
 
 # Spice console apt packages
 nova_spice_apt_packages:
@@ -355,6 +354,7 @@ nova_compute_kvm_apt_packages:
   - dosfstools
   - dosfstools-dbg
   - multipath-tools
+  - numactl
 
 # Common pip packages
 nova_pip_packages:

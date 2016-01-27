@@ -282,6 +282,8 @@ neutron_apt_packages:
   - keepalived
   - libpq-dev
   - ebtables
+  - vlan
+  - bridge-utils
 
 neutron_apt_remove_packages:
   - conntrackd

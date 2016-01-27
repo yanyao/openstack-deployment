@@ -33,6 +33,7 @@ rabbitmq_package_path: "/opt/rabbitmq-server.deb"
 
 rabbitmq_apt_packages:
   - erlang-nox
+  - openssl
 
 rabbitmq_pip_packages:
   - python-memcached
