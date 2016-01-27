@@ -67,7 +67,12 @@ ceilometer_service_adminurl: "{{ ceilometer_service_adminuri }}"
 
 
 ceilometer_service_in_ldap: false
+
 ## Ceilometer config
+# If the following variables are unset in user_variables, the value set will be half the number of available VCPUs
+# ceilometer_api_workers: 1
+# ceilometer_collector_workers: 1
+# ceilometer_notification_workers: 1
 
 # Common apt packages
 ceilometer_apt_packages:
@@ -99,9 +104,12 @@ ceilometer_service_names:
 
 ## Tunable overrides
 ceilometer_policy_overrides: {}
+ceilometer_rootwrap_conf_overrides: {}
 ceilometer_ceilometer_conf_overrides: {}
 ceilometer_api_paste_ini_overrides: {}
 ceilometer_event_definitions_yaml_overrides: {}
 ceilometer_event_pipeline_yaml_overrides: {}
 ceilometer_pipeline_yaml_overrides: {}
+ceilometer_deprecated_pipeline_yaml_overrides: {}
+ceilometer_gabbi_pipeline_yaml_overrides: {}
 
