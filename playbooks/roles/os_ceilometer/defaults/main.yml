@@ -74,6 +74,7 @@ ceilometer_apt_packages:
   - rpcbind
   - rsync
   - git
+  - libxslt1-dev
 
 # Common pip packages
 ceilometer_pip_packages:

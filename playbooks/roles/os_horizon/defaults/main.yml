@@ -121,6 +121,7 @@ horizon_apt_packages:
   - libssl-dev
   - libxslt1.1
   - openssl
+  - gettext
 
 horizon_pip_packages:
   - django-appconf
