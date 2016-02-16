@@ -60,7 +60,7 @@ nova_novncproxy_git_repo: "{{ openstack_repo_git_url }}/novnc"
 lxc_container_caches:
   - url: "{{ openstack_repo_url }}/downloads/trusty-container-ppc64.tgz"
     name: "trusty.tgz"
-    sha256sum: "1d5c284f530cc93635af83b224aae5e81d5c51dd48c1677b7071608b16a57d46"
+    sha256sum: "c0aaec5b32a5f4961a63a367c740f4f5dac1d4e4ca3bd3c2f1e98ebc3cc53c76"
     chroot_path: trusty/rootfs-ppc64el
 keystone_wsgi_processes: 4
 ansible_processor_vcpus: 2
