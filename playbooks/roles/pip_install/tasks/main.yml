@@ -69,7 +69,8 @@
     - pip-install
 
 - name: Install PIP
-  shell: "python /opt/get-pip.py {{ pip_get_pip_options }} '{{ pip_packages[0] }}'"
+  #shell: "python /opt/get-pip.py {{ pip_get_pip_options }} '{{ pip_packages[0] }}'"
+  shell: "python /opt/get-pip.py {{ pip_get_pip_options }} "
   ignore_errors: true
   register: pip_install
   until: pip_install | success
