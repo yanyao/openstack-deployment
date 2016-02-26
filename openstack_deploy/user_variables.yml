@@ -133,7 +133,10 @@ openstack_host_apt_packages:
 nova_console_type: novnc
 nova_novncproxy_git_repo: http://repo:8181/openstackgit/novnc
 nova_novncproxy_git_install_branch: master
-rpc_release: 3.0.0
+rpc_release: 3.0
 pip_links:
   - { name: "openstack_release", link: "{{ openstack_repo_url }}/os-releases/{{ openstack_release }}/" }
   - { name: "rpc_release", link: "{{ openstack_repo_url }}/rpc-releases/{{ rpc_release }}/" }
+kibana_url: "{{ openstack_repo_url }}/downloads/{{ kibana_version }}.tar.gz"
+#elasticsearch_public_url: "https://192.168.100.207:8443/elasticsearch/"
+
