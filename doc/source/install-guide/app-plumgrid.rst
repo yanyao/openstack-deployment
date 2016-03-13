@@ -6,11 +6,11 @@ Appendix E. Using PLUMgrid Neutron Plugin
 Installing Source and Host Networking
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#. Clone the PLUMgrid ansible repository into the ``/opt`` directory:
+#. Clone the PLUMgrid ansible repository under the ``/opt/`` directory:
 
    .. code-block:: shell-session
 
-       # git clone -b TAG https://github.com/plumgrid/plumgrid-ansible.git /opt
+       # git clone -b TAG https://github.com/plumgrid/plumgrid-ansible.git /opt/plumgrid-ansible
 
    Replace *``TAG``* with the current stable release tag.
 
@@ -110,8 +110,9 @@ PLUMgrid Cofigurations
 ~~~~~~~~~~~~~~~~~~~~~~
 
 On the Deployment Host create a PLUMgrid user variables file, using the sample in
-``../playbooks/plumgrid-ansible/etc/user_pg_vars.yml.example`` and place it under
-``/etc/openstack_deploy/``. The following paremeters must be configured:
+``/opt/plumgrid-ansible/etc/user_pg_vars.yml.example`` and copy it to
+``/etc/openstack_deploy/user_pg_vars.yml``. The following parameters must be
+configured:
 
 #. Replace ``PG_REPO_HOST`` with a valid repo URL hosting PLUMgrid
    packages.
@@ -120,8 +121,8 @@ On the Deployment Host create a PLUMgrid user variables file, using the sample i
 
       plumgrid_repo: PG_REPO_HOST
 
-#. Replace ``INFRA_IPs`` with comma seperated Infrastructure Node IPs and
-   ``PG_VIP`` with an anallocated IP on the management network, this will
+#. Replace ``INFRA_IPs`` with comma separated Infrastructure Node IPs and
+   ``PG_VIP`` with an unallocated IP on the management network, this will
    be used to access the PLUMgrid UI.
 
    .. code-block:: yaml
@@ -131,7 +132,7 @@ On the Deployment Host create a PLUMgrid user variables file, using the sample i
 
 #. Replace ``FABRIC_IFC`` with the name of the interface that will be used
    for PLUMgrid Fabric. [Note: PLUMgrid Fabric must be an untagged unbridged
-   raw inteface such as eth0]
+   raw interface such as eth0]
 
    .. code-block:: yaml
 
@@ -188,8 +189,8 @@ Installation
 
 .. code-block:: yaml
 
-   cd /opt/plumgrid-ansible
-   openstack-ansible plumgrid_playbooks/plumgrid_all.yml
+   cd /opt/plumgrid-ansible/plumgrid_playbooks
+   openstack-ansible plumgrid_all.yml
 
 Note: Contact PLUMgrid for an Installation Pack info@plumgrid.com
 (includes full/trial license, packages, deployment documentation and

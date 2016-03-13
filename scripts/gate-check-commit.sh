@@ -33,9 +33,11 @@ info_block "Checking for required libraries." 2> /dev/null || source $(dirname $
 # Log some data about the instance and the rest of the system
 log_instance_info
 
-# Determine the largest secondary disk device available for repartitioning
-DATA_DISK_DEVICE=$(lsblk -brndo NAME,TYPE,RO,SIZE | \
-                   awk '/d[b-z]+ disk 0/{ if ($4>m){m=$4; d=$1}}; END{print d}')
+# Get minimum disk size
+DATA_DISK_MIN_SIZE="$((1024**3 * $(awk '/bootstrap_host_data_disk_min_size/{print $2}' $(dirname ${0})/../tests/roles/bootstrap-host/defaults/main.yml) ))"
+
+# Determine the largest secondary disk device that meets the minimum size
+DATA_DISK_DEVICE=$(lsblk -brndo NAME,TYPE,RO,SIZE | awk '/d[b-z]+ disk 0/{ if ($4>m && $4>='$DATA_DISK_MIN_SIZE'){m=$4; d=$1}}; END{print d}')
 
 # Only set the secondary disk device option if there is one
 if [ -n "${DATA_DISK_DEVICE}" ]; then
@@ -65,6 +67,8 @@ if [ -f /etc/nodepool/provider -a -s /etc/nodepool/provider ]; then
 
   # Get the fastest possible Linux mirror depending on the datacenter where the
   # tests are running.
+  # The nodepool provider list can be found in:
+  # https://github.com/openstack-infra/project-config/blob/master/nodepool/nodepool.yaml
   case ${NODEPOOL_PROVIDER} in
   "rax-dfw"*)
       export UBUNTU_REPO="http://dfw.mirror.rackspace.com/ubuntu"
@@ -88,6 +92,12 @@ if [ -f /etc/nodepool/provider -a -s /etc/nodepool/provider ]; then
       export UBUNTU_REPO="http://ord.mirror.rackspace.com/ubuntu"
       ;;
   "internap-nyj01"*)
+      export UBUNTU_REPO="http://iad.mirror.rackspace.com/ubuntu"
+      ;;
+  "vexxhost-ca-ymq-1"*)
+      export UBUNTU_REPO="http://ubuntu.mirror.vexxhost.com/ubuntu"
+      ;;
+  "osic-cloud1"*)
       export UBUNTU_REPO="http://iad.mirror.rackspace.com/ubuntu"
       ;;
   esac
