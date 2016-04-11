@@ -21,7 +21,7 @@ MAX_RETRIES=${MAX_RETRIES:-5}
 REPORT_DATA=${REPORT_DATA:-""}
 ANSIBLE_PARAMETERS=${ANSIBLE_PARAMETERS:-""}
 STARTTIME="${STARTTIME:-$(date +%s)}"
-PIP_INSTALL_OPTIONS=${PIP_INSTALL_OPTIONS:-'pip==8.1.0 setuptools==20.2.2 wheel==0.29.0 '}
+PIP_INSTALL_OPTIONS=${PIP_INSTALL_OPTIONS:-'pip==8.1.1 setuptools==20.3.1 wheel==0.29.0 '}
 
 # The default SSHD configuration has MaxSessions = 10. If a deployer changes
 #  their SSHD config, then the FORKS may be set to a higher number. We set the
@@ -44,11 +44,9 @@ function successerator {
   set +e
   # Get the time that the method was started.
   OP_START_TIME=$(date +%s)
-  RETRY=0
   # Set the initial return value to failure.
   false
-  while [ $? -ne 0 -a ${RETRY} -lt ${MAX_RETRIES} ];do
-    $((RETRY++))
+  for ((RETRY=0; $? != 0 && RETRY < MAX_RETRIES; RETRY++)); do
     if [ ${RETRY} -gt 1 ];then
       $@ -vvvv
     else
@@ -111,6 +109,7 @@ function exit_state {
 
 function exit_success {
   set +x
+  [[ "${OSA_GATE_JOB:-false}" = true ]] && gate_job_exit_tasks
   exit_state 0
 }
 
@@ -119,7 +118,12 @@ function exit_fail {
   log_instance_info
   cat ${INFO_FILENAME}
   info_block "Error Info - $@"
+  [[ "${OSA_GATE_JOB:-false}" = true ]] && gate_job_exit_tasks
   exit_state 1
+}
+
+function gate_job_exit_tasks {
+  [[ -d "/openstack/log" ]] && chmod -R 0777 /openstack/log
 }
 
 function print_info {
@@ -217,7 +221,9 @@ function get_pip {
   if [ "$(which pip)" ]; then
 
     # make sure that the right pip base packages are installed
-    pip install --upgrade ${PIP_INSTALL_OPTIONS}
+    # If this fails retry with --isolated to bypass the repo server because the repo server will not have
+    # been updated at this point to include any newer pip packages.
+    pip install --upgrade ${PIP_INSTALL_OPTIONS} || pip install --upgrade --isolated ${PIP_INSTALL_OPTIONS}
 
   # when pip is not installed, install it
   else
@@ -249,7 +255,6 @@ function get_pip {
     exit_fail
   fi
 }
-
 
 ## Signal traps --------------------------------------------------------------
 # Trap all Death Signals and Errors

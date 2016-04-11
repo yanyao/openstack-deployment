@@ -1,5 +1,5 @@
 ---
-# Copyright 2015, Rackspace US, Inc.
+# Copyright 2016, Rackspace US, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,8 +13,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-## OpenStack Source Code Release
-openstack_release: 11.2.13
-
-# Global minimum kernel requirement
-openstack_host_required_kernel: 3.13.0-34-generic
+- name: MariaDB apt sources cleanup
+  hosts: "all_containers"
+  max_fail_percentage: 100
+  gather_facts: false
+  user: root
+  tasks:
+    - name: Remove MariaDB repositories left over from Juno
+      shell: |
+        sed -i '/http:.*maria.*/d' /etc/apt/repos.d/*
