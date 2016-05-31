@@ -352,7 +352,7 @@ nova_compute_kvm_apt_packages:
   - nfs-common
   - dosfstools
   - dosfstools-dbg
-  - multipath-tools
+  #- multipath-tools
 
 # Common pip packages
 nova_pip_packages:
