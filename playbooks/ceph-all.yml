@@ -13,8 +13,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-## OpenStack Source Code Release
-openstack_release: 11.2.16
-
-# Global minimum kernel requirement
-openstack_host_required_kernel: 3.13.0-34-generic
+- include: ceph-mon.yml
+- include: ceph-osd.yml
