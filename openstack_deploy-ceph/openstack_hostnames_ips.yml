@@ -1,0 +1,106 @@
+{
+    "compute01": {
+        "ansible_ssh_host": "172.29.236.101", 
+        "container_address": "172.29.236.101"
+    }, 
+    "compute01_ceph_mon_container-d5da879f": {
+        "ansible_ssh_host": "172.29.239.129", 
+        "container_address": "172.29.239.129"
+    }, 
+    "compute02": {
+        "ansible_ssh_host": "172.29.236.102", 
+        "container_address": "172.29.236.102"
+    }, 
+    "compute02_ceph_mon_container-23714cea": {
+        "ansible_ssh_host": "172.29.237.205", 
+        "container_address": "172.29.237.205"
+    }, 
+    "startcloud": {
+        "ansible_ssh_host": "172.29.236.100", 
+        "container_address": "172.29.236.100"
+    }, 
+    "startcloud_ceph_mon_container-f94e180c": {
+        "ansible_ssh_host": "172.29.238.108", 
+        "container_address": "172.29.238.108"
+    }, 
+    "startcloud_cinder_api_container-f630e74d": {
+        "ansible_ssh_host": "172.29.238.129", 
+        "container_address": "172.29.238.129"
+    }, 
+    "startcloud_cinder_scheduler_container-e64d86f0": {
+        "ansible_ssh_host": "172.29.238.207", 
+        "container_address": "172.29.238.207"
+    }, 
+    "startcloud_galera_container-70decd92": {
+        "ansible_ssh_host": "172.29.238.212", 
+        "container_address": "172.29.238.212"
+    }, 
+    "startcloud_glance_container-265954d9": {
+        "ansible_ssh_host": "172.29.238.238", 
+        "container_address": "172.29.238.238"
+    }, 
+    "startcloud_heat_apis_container-ceb6e676": {
+        "ansible_ssh_host": "172.29.238.112", 
+        "container_address": "172.29.238.112"
+    }, 
+    "startcloud_heat_engine_container-05f56654": {
+        "ansible_ssh_host": "172.29.237.195", 
+        "container_address": "172.29.237.195"
+    }, 
+    "startcloud_horizon_container-4586fa79": {
+        "ansible_ssh_host": "172.29.239.13", 
+        "container_address": "172.29.239.13"
+    }, 
+    "startcloud_keystone_container-e62c06f5": {
+        "ansible_ssh_host": "172.29.236.169", 
+        "container_address": "172.29.236.169"
+    }, 
+    "startcloud_memcached_container-5df1f16f": {
+        "ansible_ssh_host": "172.29.238.225", 
+        "container_address": "172.29.238.225"
+    }, 
+    "startcloud_neutron_agents_container-a6508526": {
+        "ansible_ssh_host": "172.29.239.164", 
+        "container_address": "172.29.239.164"
+    }, 
+    "startcloud_neutron_server_container-3a6ea098": {
+        "ansible_ssh_host": "172.29.237.214", 
+        "container_address": "172.29.237.214"
+    }, 
+    "startcloud_nova_api_metadata_container-22e33911": {
+        "ansible_ssh_host": "172.29.239.4", 
+        "container_address": "172.29.239.4"
+    }, 
+    "startcloud_nova_api_os_compute_container-8a0ac93d": {
+        "ansible_ssh_host": "172.29.236.139", 
+        "container_address": "172.29.236.139"
+    }, 
+    "startcloud_nova_cert_container-db77b200": {
+        "ansible_ssh_host": "172.29.239.236", 
+        "container_address": "172.29.239.236"
+    }, 
+    "startcloud_nova_conductor_container-da352da0": {
+        "ansible_ssh_host": "172.29.237.142", 
+        "container_address": "172.29.237.142"
+    }, 
+    "startcloud_nova_console_container-e9055d17": {
+        "ansible_ssh_host": "172.29.239.88", 
+        "container_address": "172.29.239.88"
+    }, 
+    "startcloud_nova_scheduler_container-e7256086": {
+        "ansible_ssh_host": "172.29.238.241", 
+        "container_address": "172.29.238.241"
+    }, 
+    "startcloud_rabbit_mq_container-2353a35a": {
+        "ansible_ssh_host": "172.29.237.226", 
+        "container_address": "172.29.237.226"
+    }, 
+    "startcloud_rsyslog_container-3eb60fc8": {
+        "ansible_ssh_host": "172.29.239.225", 
+        "container_address": "172.29.239.225"
+    }, 
+    "startcloud_utility_container-a0879c33": {
+        "ansible_ssh_host": "172.29.239.154", 
+        "container_address": "172.29.239.154"
+    }
+}

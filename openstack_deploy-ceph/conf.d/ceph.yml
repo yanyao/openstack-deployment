@@ -1,0 +1,57 @@
+mons_hosts:
+  startcloud:
+    ip: 172.29.236.100
+  compute01:
+    ip: 172.29.236.101
+  compute02:
+    ip: 172.29.236.101
+
+osds_hosts:
+  compute01:
+    ip: 172.29.236.101
+    container_vars:
+      devices:
+        - /dev/sdl
+        - /dev/sdm
+        - /dev/sdn
+        - /dev/sdo
+        - /dev/sdp
+        - /dev/sdq
+        - /dev/sdr
+        - /dev/sds
+        - /dev/sdt
+        - /dev/sdu
+  compute02:
+    ip: 172.29.236.102
+    container_vars:
+      devices:
+        - /dev/sdl
+        - /dev/sdm
+        - /dev/sdn
+        - /dev/sdo
+        - /dev/sdp
+        - /dev/sdq
+        - /dev/sdr
+        - /dev/sds
+        - /dev/sdt
+        - /dev/sdu
+        - /dev/sdv
+
+storage_hosts:
+  startcloud:
+    ip: 172.29.236.100
+    container_vars:
+      cinder_backends:
+        limit_container_types: cinder_volume
+        ceph:
+          volume_driver: cinder.volume.drivers.rbd.RBDDriver
+          rbd_pool: volumes
+          rbd_ceph_conf: /etc/ceph/ceph.conf
+          rbd_flatten_volume_from_snapshot: 'false'
+          rbd_max_clone_depth: 5
+          rbd_store_chunk_size: 4
+          rados_connect_timeout: -1
+          glance_api_version: 2
+          volume_backend_name: ceph
+          rbd_user: "{{ cinder_ceph_client }}"
+          rbd_secret_uuid: "{{ cinder_ceph_client_uuid }}"

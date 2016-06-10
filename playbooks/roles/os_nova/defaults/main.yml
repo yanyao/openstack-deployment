@@ -322,6 +322,7 @@ nova_apt_packages:
   - git
   - libpq-dev
   - libxslt1-dev
+  - iptables
 
 # Spice console apt packages
 nova_spice_apt_packages:
