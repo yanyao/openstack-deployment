@@ -59,3 +59,14 @@
     - Restart Apache
   tags:
     - keystone-config
+
+- name: Setup the keystone token flush cron job
+  cron:
+    name: "keystone-manage token_flush"
+    minute: 0
+    hour: 0
+    user: "root"
+    job: "/usr/local/bin/keystone-manage token_flush"
+    cron_file: "keystone-token-flush"
+  tags:
+    - keystone-config
