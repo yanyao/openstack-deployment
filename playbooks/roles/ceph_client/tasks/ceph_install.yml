@@ -19,6 +19,7 @@
     state: latest
     update_cache: yes
     cache_valid_time: 600
+    force: yes
   register: install_packages
   until: install_packages|success
   retries: 5
