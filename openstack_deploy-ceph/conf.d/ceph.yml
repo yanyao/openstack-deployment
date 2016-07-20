@@ -1,35 +1,15 @@
 mons_hosts:
-  vanecloud-1:
+  aio1:
     ip: 172.29.236.100
-  vanecloud-2:
-    ip: 172.29.236.101
-  vanecloud-3:
-    ip: 172.29.236.102
 osds_hosts:
-  vanecloud-1:
+  aio1:
     ip: 172.29.236.100
     container_vars:
       devices:
-        - /dev/sdd
-        - /dev/sde
-        - /dev/sdf
-  vanecloud-2:
-    ip: 172.29.236.101
-    container_vars:
-      devices:
-        - /dev/sdd
-        - /dev/sde
-        - /dev/sdf
-  vanecloud-3:
-    ip: 172.29.236.102
-    container_vars:
-        devices:
-          - /dev/sdd
-          - /dev/sde
-          - /dev/sdf
+        - /dev/vdb
 
 storage_hosts:
-  vanecloud-1:
+  aio1:
     ip: 172.29.236.100
     container_vars:
       cinder_backends:

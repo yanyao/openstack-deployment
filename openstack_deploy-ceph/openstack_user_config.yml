@@ -12,7 +12,7 @@ used_ips:
 
 global_overrides:
   internal_lb_vip_address: 172.29.236.100
-  external_lb_vip_address: 192.168.20.11
+  external_lb_vip_address: 192.168.45.26
   tunnel_bridge: "br-vxlan"
   management_bridge: "br-mgmt"
   provider_networks:
@@ -60,7 +60,7 @@ global_overrides:
           - swift_proxy
 
 shared-infra_hosts:
-  vanecloud-1:
+  aio1:
     # Rabbitmq, and galera are set to multiples to test clustering.
     #affinity:
     #  galera_container: 3
@@ -68,14 +68,14 @@ shared-infra_hosts:
     ip: 172.29.236.100
 
 os-infra_hosts:
-  vanecloud-1:
+  aio1:
     # Horizon is set to multiple to test clustering. This test only requires x2.
     #affinity:
     #  horizon_container: 2
     ip: 172.29.236.100
 
 storage-infra_hosts:
-  vanecloud-1:
+  aio1:
     ip: 172.29.236.100
 
 #repo-infra_hosts:
@@ -86,22 +86,18 @@ storage-infra_hosts:
 #    ip: 172.29.236.100
 
 identity_hosts:
-  vanecloud-1:
+  aio1:
     # Keystone is set to multiple to test clustering. This test only requires x2.
     #affinity:
     #  keystone_container: 2
     ip: 172.29.236.100
 
 compute_hosts:
-  vanecloud-1:
+  aio1:
     ip: 172.29.236.100
-  vanecloud-2:
-    ip: 172.29.236.101
-  vanecloud-3:
-    ip: 172.29.236.102
 
 #storage_hosts:
-#  vanecloud-1:
+#  aio1:
 #    ip: 172.29.236.100
 #    container_vars:
 #      cinder_backends:
@@ -112,13 +108,13 @@ compute_hosts:
 #          volume_backend_name: LVM_iSCSI
 
 log_hosts:
-  vanecloud-1:
+  aio1:
     ip: 172.29.236.100
 
 network_hosts:
-  vanecloud-1:
+  aio1:
     ip: 172.29.236.100
 
 haproxy_hosts:
-  vanecloud-1:
+  aio1:
     ip: 172.29.236.100

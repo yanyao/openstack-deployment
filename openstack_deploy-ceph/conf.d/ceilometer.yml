@@ -1,13 +1,9 @@
 # The compute host that the ceilometer compute agent will be running on.
 metering-compute_hosts:
-  vanecloud-1:
+  aio1:
     ip: 172.29.236.100
-  vanecloud-2:
-    ip: 172.29.236.101
-  vanecloud-3:
-    ip: 172.29.236.102
 
 # The infra nodes that the central agents will be running on
 metering-infra_hosts:
-  vanecloud-1:
+  aio1:
     ip: 172.29.236.100
