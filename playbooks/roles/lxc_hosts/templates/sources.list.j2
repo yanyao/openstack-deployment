@@ -5,8 +5,8 @@
 #deb {{ lxc_container_template_security_apt_repo }} {{ lxc_container_release }}-security main restricted universe multiverse
 
 deb {{ openstack_repo_url }}/{{ lxc_container_release }} /
-deb {{ openstack_repo_url }}/{{ lxc_container_release }}-updates /
-deb {{ openstack_repo_url }}/{{ lxc_container_release }}-ceph /
+#deb {{ openstack_repo_url }}/{{ lxc_container_release }}-updates /
+#deb {{ openstack_repo_url }}/{{ lxc_container_release }}-ceph /
 #deb {{ lxc_container_template_main_apt_repo }} {{ lxc_container_release }} {{ lxc_container_template_apt_components | join(" ") }}
 #deb {{ lxc_container_template_main_apt_repo }} {{ lxc_container_release }}-updates {{ lxc_container_template_apt_components | join(" ") }}
 #deb {{ lxc_container_template_main_apt_repo }} {{ lxc_container_release }}-backports {{ lxc_container_template_apt_components | join(" ") }}
