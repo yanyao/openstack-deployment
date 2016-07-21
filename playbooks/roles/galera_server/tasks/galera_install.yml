@@ -39,6 +39,7 @@
     pkg: "{{ item }}"
     state: latest
     force: yes
+    dpkg_options: force-confdef,force-confold,force-overwrite
   register: install_packages
   until: install_packages|success
   retries: 5
